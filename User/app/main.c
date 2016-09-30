@@ -826,7 +826,7 @@ static u16 key_ctl_check(void)
 	{
 		if(((key_tmp>>i)&0x0001)==0)
 		{
-			delay_X1ms(40);
+			delay_X1ms(20);
 
 			key_tmp = key_merge();
 
@@ -837,7 +837,7 @@ static u16 key_ctl_check(void)
 
 					if((i+1) == BPPLUS || (i+1) == BPSUB)
 					{
-						if(long_press_cnt>80)
+						if(long_press_cnt>100)
 						{
 							if(press_long_flag)
 								return 0;
@@ -851,6 +851,7 @@ static u16 key_ctl_check(void)
 						}
 
 						long_press_cnt++;
+						return 0;
 					}
 					else
 					{
@@ -1150,7 +1151,7 @@ int main(void)
 	{
 			
         key_monitor();
-		delay_X1ms(10);
+		//delay_X1ms(10);
 		
 	}
 }
